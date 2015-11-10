@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="guitars">
   <head>
     <meta charset="utf-8">
     <title></title>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js'></script>
+    <script type="text/javascript">
+      angular.module('guitars', ['ngRoute'])
+        .controller('HomeController', function (){
+
+        })
+        .controller('GuitarController', function (){
+
+        })
+        .config(function($routeProvider, $locationProvider){
+          $routeProvider
+            .when('/', {
+              templateUrl: '/partials/home.html',
+              controller: 'HomeController'
+            })
+            .when('/guitars', {
+              templateUrl: '/partials/guitars.html',
+              controller: 'GuitarController'
+            })
+          $locationProvider.html5Mode(true)
+        })
+    </script>
+    <base href="/">
   </head>
   <body>
-    {{1+1}}
+    <nav>
+      <a href="/">Home</a>
+      |
+      <a href="/guitars">Guitars</a>
+    </nav>
+    <ng-view>
+    </ng-view>
   </body>
 </html>
